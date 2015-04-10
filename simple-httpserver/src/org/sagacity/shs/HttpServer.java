@@ -43,7 +43,7 @@ public class HttpServer {
 				continue;
 			}
 
-			Set<SelectionKey> keys = selector.keys();
+			Set<SelectionKey> keys = selector.selectedKeys();
 			Iterator<SelectionKey> it = keys.iterator();
 			while (it.hasNext()) {
 				SelectionKey key = null;

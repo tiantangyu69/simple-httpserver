@@ -55,8 +55,8 @@ public class ChannelIO {
 		return this.requestBuffer;
 	}
 
-	public int write() throws IOException {
-		return socketChannel.write(requestBuffer);
+	public int write(ByteBuffer src) throws IOException {
+		return socketChannel.write(src);
 	}
 
 	public long transferTo(FileChannel channel, long pos, long len)

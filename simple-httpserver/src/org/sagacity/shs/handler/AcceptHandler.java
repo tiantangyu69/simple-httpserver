@@ -4,7 +4,6 @@
 package org.sagacity.shs.handler;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
@@ -23,6 +22,7 @@ public class AcceptHandler implements Handler {
 	 * @see
 	 * org.sagacity.shs.handler.Handler#handler(java.nio.channels.SelectionKey)
 	 */
+	@SuppressWarnings("unused")
 	@Override
 	public void handler(SelectionKey key) throws IOException {
 		// 处理接受连接事件

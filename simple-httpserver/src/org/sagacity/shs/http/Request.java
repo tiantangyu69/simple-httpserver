@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  * 
  */
 public class Request {
-	static class Action {
+	public static class Action {
 		private String name;
 
 		private Action(String name) {
@@ -27,8 +27,9 @@ public class Request {
 			return name;
 		}
 
-		static Action GET = new Action("GET");
-		static Action POST = new Action("POST");
+		public static Action GET = new Action("GET");
+		public static Action POST = new Action("POST");
+		public static Action HEAD = new Action("HEAD");
 
 		public static Action parse(String s) {
 			if (s.equals("GET")) {
