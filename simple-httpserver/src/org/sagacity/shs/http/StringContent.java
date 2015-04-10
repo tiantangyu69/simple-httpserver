@@ -4,6 +4,7 @@
 package org.sagacity.shs.http;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import org.sagacity.shs.ChannelIO;
 
@@ -12,6 +13,11 @@ import org.sagacity.shs.ChannelIO;
  *
  */
 public class StringContent implements Content {
+	private String errMsg; 
+	
+	public StringContent(String errMsg){
+		this.errMsg = errMsg;
+	}
 
 	/* (non-Javadoc)
 	 * @see org.sagacity.shs.http.Sendable#prepare()
@@ -27,8 +33,8 @@ public class StringContent implements Content {
 	 */
 	@Override
 	public boolean send(ChannelIO io) throws IOException {
-		// TODO Auto-generated method stub
-		return false;
+		io.write(Charset.forName("utf-8").encode(errMsg));
+		return true;
 	}
 
 	/* (non-Javadoc)
@@ -45,8 +51,7 @@ public class StringContent implements Content {
 	 */
 	@Override
 	public String type() {
-		// TODO Auto-generated method stub
-		return null;
+		return "text/html;charset=utf-8";
 	}
 
 	/* (non-Javadoc)
@@ -54,8 +59,7 @@ public class StringContent implements Content {
 	 */
 	@Override
 	public long length() {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.errMsg.length();
 	}
 
 }

@@ -47,7 +47,7 @@ public class RequestHander implements Handler {
 			return true;
 		} catch (Exception e) {
 			response = new Response(Response.Code.BAD_REQUEST,
-					new StringContent());
+					new StringContent(Response.Code.BAD_REQUEST.toString()));
 		}
 		return false;
 	}
@@ -57,7 +57,7 @@ public class RequestHander implements Handler {
 
 		if (action != Request.Action.GET && action != Request.Action.HEAD) {
 			response = new Response(Response.Code.METHOD_NOT_ALLOWED,
-					new StringContent());
+					new StringContent(Response.Code.METHOD_NOT_ALLOWED.toString()));
 		} else {
 			response = new Response(Response.Code.OK, new FileContent(
 					request.uri()), action);
@@ -87,7 +87,7 @@ public class RequestHander implements Handler {
 				} catch (IOException exception) {
 					response.release();
 					response = new Response(Response.Code.NOT_FOUND,
-							new StringContent());
+							new StringContent(Response.Code.NOT_FOUND.toString()));
 					response.prepare();
 				}
 

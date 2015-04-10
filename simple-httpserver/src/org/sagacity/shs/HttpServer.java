@@ -50,7 +50,7 @@ public class HttpServer {
 				try {
 					key = it.next();
 					it.remove();
-					Handler handler = (AcceptHandler) key.attachment();
+					Handler handler = (Handler) key.attachment();
 					handler.handler(key);
 				} catch (Exception e) {
 					e.printStackTrace();

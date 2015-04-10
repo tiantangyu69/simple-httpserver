@@ -56,7 +56,7 @@ public class Response implements Sendable {
 		CharBuffer cb = CharBuffer.allocate(1024);
 		while (true) {
 			try {
-				cb.put("HTTP1.1 ").put(code.toString()).put(CLRF);
+				cb.put("HTTP/1.1 ").put(code.toString()).put(CLRF);
 				cb.put("Server:nio/1.1").put(CLRF);
 				cb.put("Content-type:").put(content.type()).put(CLRF);
 				cb.put("Content-length:").put(Long.toString(content.length()))

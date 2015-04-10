@@ -39,9 +39,9 @@ public class FileContent implements Content {
 		String nm = file.getName();
 
 		if (nm.endsWith(".html") || nm.endsWith(".htm")) {
-			type = "text/html;charset=iso-8859-1";
+			type = "text/html;charset=utf-8";
 		} else if ((nm.indexOf(".") < 0) || nm.endsWith(".txt")) {
-			type = "text/plain;charset=iso-8859-1";
+			type = "text/plain;charset=utf-8";
 		} else {
 			type = "application/octet-stream";
 		}
@@ -86,7 +86,7 @@ public class FileContent implements Content {
 			return false;
 		}
 
-		position += io.transferTo(fileChannel, position, length - length);
+		position += io.transferTo(fileChannel, position, length - position);
 		return (position < length);
 	}
 

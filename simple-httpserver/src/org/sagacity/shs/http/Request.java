@@ -8,8 +8,6 @@ import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author lizhitao
@@ -91,30 +89,39 @@ public class Request {
 		return bb;
 	}
 
-	private static Pattern requestPattern = Pattern.compile(
-			"\\A([A-Z]+)+([^]+)+HTTP/([0-9\\.]+)$"
-					+ ".*^Host:([^]+)$.*\r\n\r\n\\z", Pattern.MULTILINE
-					| Pattern.DOTALL);
+	/*
+	 * private static Pattern requestPattern = Pattern.compile(
+	 * "\\A([A-Z]+) +([^]+) +HTTP/([0-9]\\.]+)$" +
+	 * ".*^Host:([^]+)$.*\r\n\r\n\\z", Pattern.MULTILINE | Pattern.DOTALL);
+	 */
 
 	public static Request parse(ByteBuffer bb) {
 		bb = deleteContent(bb);
 		CharBuffer cb = requestCharset.decode(bb);
-
-		Matcher m = requestPattern.matcher(cb);
-
-		if (!m.matches()) {
-			throw new RuntimeException();
+		
+		String requestHeader = cb.toString();
+		String[] line = requestHeader.split("\r\n");
+		if(null != line && line.length >= 2){
+			String[] arr = line[0].split(" ");
+			String[] arr2 = line[1].split(" ");
+			
+			 Action action;
+			 action = Action.parse(arr[0]);
+			
+			 URI uri = null;
+			 try {
+			 uri = new URI("http://" + arr2[1] + arr[1]);
+			 } catch (URISyntaxException e) {
+			 e.printStackTrace();
+			 }
+			 return new Request(action, arr[2], uri);
 		}
-
-		Action action;
-		action = Action.parse(m.group(1));
-
-		URI uri = null;
-		try {
-			uri = new URI("http://" + m.group(4) + m.group(2));
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		}
-		return new Request(action, m.group(3), uri);
+		
+//		 Matcher m = requestPattern.matcher(cb);
+		
+//		 if (!m.matches()) {
+//		 throw new RuntimeException();
+//		 }
+		return null;
 	}
 }
