@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package org.sagacity.shs;
 
 import java.io.IOException;
