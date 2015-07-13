@@ -15,13 +15,7 @@ import org.sagacity.shs.ChannelIO;
  * @action 处理连接事件
  */
 public class AcceptHandler implements Handler {
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.sagacity.shs.handler.Handler#handler(java.nio.channels.SelectionKey)
-	 */
+	
 	@SuppressWarnings("unused")
 	@Override
 	public void handler(SelectionKey key) throws IOException {

@@ -25,11 +25,6 @@ public class FileContent implements Content {
 
 	private String type = null;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Content#type()
-	 */
 	@Override
 	public String type() {
 		if (type != null) {
@@ -52,11 +47,6 @@ public class FileContent implements Content {
 	private long length = -1;
 	private long position = -1;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Sendable#prepare()
-	 */
 	@Override
 	public void prepare() throws IOException {
 		if (fileChannel == null) {
@@ -66,11 +56,6 @@ public class FileContent implements Content {
 		position = 0;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Sendable#send(org.sagacity.shs.ChannelIO)
-	 */
 	@Override
 	public boolean send(ChannelIO io) throws IOException {
 		// TODO Auto-generated method stub
@@ -90,11 +75,6 @@ public class FileContent implements Content {
 		return (position < length);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Sendable#release()
-	 */
 	@Override
 	public void release() throws IOException {
 		// TODO Auto-generated method stub
@@ -104,11 +84,6 @@ public class FileContent implements Content {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Content#length()
-	 */
 	@Override
 	public long length() {
 		return length;

@@ -64,12 +64,6 @@ public class RequestHander implements Handler {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.sagacity.shs.handler.Handler#handler(java.nio.channels.SelectionKey)
-	 */
 	@Override
 	public void handler(SelectionKey key) throws IOException {
 		try {

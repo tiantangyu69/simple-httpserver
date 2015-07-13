@@ -117,11 +117,6 @@ public class Request {
 			 return new Request(action, arr[2], uri);
 		}
 		
-//		 Matcher m = requestPattern.matcher(cb);
-		
-//		 if (!m.matches()) {
-//		 throw new RuntimeException();
-//		 }
 		return null;
 	}
 }

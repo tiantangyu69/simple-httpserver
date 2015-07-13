@@ -74,22 +74,12 @@ public class Response implements Sendable {
 		return responseCharset.encode(cb);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Sendable#prepare()
-	 */
 	@Override
 	public void prepare() throws IOException {
 		content.prepare();
 		headBuffer = headers();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Sendable#send(org.sagacity.shs.ChannelIO)
-	 */
 	@Override
 	public boolean send(ChannelIO io) throws IOException {
 		if (headBuffer == null) {
@@ -111,11 +101,6 @@ public class Response implements Sendable {
 		return false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.sagacity.shs.http.Sendable#release()
-	 */
 	@Override
 	public void release() throws IOException {
 		content.release();
